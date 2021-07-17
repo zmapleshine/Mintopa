@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2021 the original author or authors.
+  ~ SPDX-License-Identifier: Apache-2.0.
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>midnight-opera</artifactId>
+        <groupId>com.minardream</groupId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>javaagent</artifactId>
+
+    <name>midnight-opera-javaagent</name>
+    <description>Midnight Opera Javaagent</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.minardream</groupId>
+            <artifactId>javaagent-tooling</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- instrumentation modules -->
+        <dependency>
+            <groupId>com.minardream</groupId>
+            <artifactId>javaagent-demo-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-http-url-connection</artifactId>
+            <version>${opentelemetry-instrumentation-libs.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- shade  dependency exclude bootstrap core-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>_inst</finalName>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <relocations>
+                                <!-- Prevents conflict with other SLF4J instances. Important for premain.-->
+                                <relocation>
+                                    <pattern>org.slf4j</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.slf4j</shadedPattern>
+                                </relocation>
+                                <!-- rewrite dependencies calling Logger.getLogger-->
+                                <relocation>
+                                    <pattern>java.util.logging.Logger</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.bootstrap.PatchLogger</shadedPattern>
+                                </relocation>
+                                <!-- prevents conflict with library instrumentation-->
+                                <relocation>
+                                    <pattern>io.opentelemetry.instrumentation</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.instrumentation</shadedPattern>
+                                </relocation>
+                                <!-- relocate OpenTelemetry API-->
+                                <relocation>
+                                    <pattern>io.opentelemetry.api</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.io.opentelemetry.api
+                                    </shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.opentelemetry.semconv</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.io.opentelemetry.semconv
+                                    </shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.opentelemetry.context</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.io.opentelemetry.context
+                                    </shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.opentelemetry.extension.aws</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.io.opentelemetry.extension.aws
+                                    </shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.opentelemetry.extension.kotlin</pattern>
+                                    <shadedPattern>io.opentelemetry.javaagent.shaded.io.opentelemetry.extension.kotlin
+                                    </shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>application.io.opentelemetry</pattern>
+                                    <shadedPattern>io.opentelemetry</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.slf4j</exclude>
+                                    <exclude>*:opentelemetry-api</exclude>
+                                    <exclude>*:opentelemetry-api-metrics</exclude>
+                                    <exclude>*:opentelemetry-context</exclude>
+                                    <exclude>*:opentelemetry-semconv</exclude>
+                                    <exclude>*:opentelemetry-javaagent-bootstrap</exclude>
+                                    <exclude>*:opentelemetry-javaagent-api</exclude>
+                                    <exclude>*:opentelemetry-instrumentation-api</exclude>
+                                    <!--                                    <exclude>*:opentelemetry-instrumentation-api-caching</exclude>-->
+                                </excludes>
+                            </artifactSet>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                    <resources>
+                                        <resource>.txt</resource>
+                                        <resource>LICENSE</resource>
+                                        <resource>NOTICE</resource>
+                                        <resource>**/module-info.class</resource>
+                                        <resource>META-INF/jandex.idx</resource>
+                                    </resources>
+                                </transformer>
+
+                            </transformers>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/**/*.xml</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <unzip src="${project.build.directory}/_inst.jar"
+                                       dest="${project.build.directory}/inst/"/>
+
+                                <move todir="${project.build.outputDirectory}/inst/" includeemptydirs="false">-->
+                                    <fileset dir="${project.build.directory}/inst/"/>
+                                    <mapper type="glob" from="*.class" to="*.classdata"/>
+                                </move>
+                                <move todir="${project.build.outputDirectory}/inst/" includeemptydirs="false">
+                                    <fileset dir="${project.build.directory}/inst/"/>
+                                </move>
+
+                                <jar destfile="${project.build.directory}/${project.parent.artifactId}-${revision}-final.jar"
+                                     basedir="${project.build.outputDirectory}"
+                                     filesetmanifest="merge"
+
+                                >
+                                    <!-- bootstrap -->
+                                    <zipfileset src="../bootstrap/target/_otel_javaagent_bootstrap.jar"/>
+
+                                </jar>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
