@@ -14,7 +14,7 @@
     <version>${revision}</version>
 
     <packaging>pom</packaging>
-    <name>Midnight Opera</name>
+    <name>midnight-opera</name>
     <description>Use maven to build opentelemetry-java-instrumentation</description>
     <url>https://github.com/zmapleshine/midnight-opera</url>
 
