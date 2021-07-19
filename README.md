@@ -4,7 +4,8 @@
 ![Language](https://img.shields.io/badge/language-Java-orange.svg)
 ![Language](https://img.shields.io/hexpm/l/plug)
 
-Use maven to build opentelemetry-java-instrumentation.
+Develop "openelemetry-java-instrumentation" project in a lightweight way.
+Use maven to build it.
 
 # What
 
