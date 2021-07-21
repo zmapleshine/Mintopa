@@ -19,9 +19,9 @@ public class AgentBootstrap {
 
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println();
-        System.out.println(":: Midnight Opera ver" + AgentBootstrap.class.getPackage().getImplementationVersion() + " ::");
+        System.out.println(":: Midnight Opera ver " + AgentBootstrap.class.getPackage().getImplementationVersion() + " ::");
         System.out.println(":: Website : https://github.com/zmapleshine/Midnight-Opera");
-        System.out.println(":: OpenTelemetry Java Instrumentation (v1.3.1-alpha) : https://github.com/open-telemetry/opentelemetry-java-instrumentation");
+        System.out.println(":: OpenTelemetry Java Instrumentation (v1.4.0-alpha) : https://github.com/open-telemetry/opentelemetry-java-instrumentation");
         System.out.println();
         OpenTelemetryAgent.premain(agentArgs, inst);
     }
