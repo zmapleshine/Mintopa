@@ -31,7 +31,7 @@ It has three main purposes:
 
 # How
 
-The construction of the project is very simple, using the following command:
+Build this project is very simple, using the following command:
 
 ```shell
 maven clean package
