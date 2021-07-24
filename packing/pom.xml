@@ -14,7 +14,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>javaagent</artifactId>
+    <artifactId>packing</artifactId>
 
     <name>midnight-opera-javaagent</name>
     <description>Midnight Opera Javaagent</description>
@@ -27,10 +27,41 @@
         </dependency>
 
         <!-- instrumentation modules -->
+
         <dependency>
-            <groupId>com.minardream</groupId>
-            <artifactId>javaagent-demo-module</artifactId>
-            <version>${revision}</version>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-internal-url-class-loader</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-internal-proxy</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-internal-class-loader</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-executors</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-methods</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent.instrumentation</groupId>
+            <artifactId>opentelemetry-javaagent-runtime-metrics</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
         </dependency>
 
         <dependency>
@@ -38,6 +69,13 @@
             <artifactId>opentelemetry-javaagent-http-url-connection</artifactId>
             <version>${opentelemetry-instrumentation-libs.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.minardream</groupId>
+            <artifactId>javaagent-demo-module</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -110,9 +148,10 @@
                                     <exclude>*:opentelemetry-context</exclude>
                                     <exclude>*:opentelemetry-semconv</exclude>
                                     <exclude>*:opentelemetry-javaagent-bootstrap</exclude>
-                                    <exclude>*:opentelemetry-javaagent-api</exclude>
+                                    <exclude>*:opentelemetry-javaagent-instrumentation-api</exclude>
+                                    <exclude>*:opentelemetry-instrumentation-api-annotation-support</exclude>
                                     <exclude>*:opentelemetry-instrumentation-api</exclude>
-                                    <!--                                    <exclude>*:opentelemetry-instrumentation-api-caching</exclude>-->
+                                    <!-- <exclude>*:opentelemetry-instrumentation-api-caching</exclude>-->
                                 </excludes>
                             </artifactSet>
                             <transformers>
@@ -164,7 +203,7 @@
                                     <fileset dir="${project.build.directory}/inst/"/>
                                 </move>
 
-                                <jar destfile="${project.build.directory}/${project.parent.artifactId}-${revision}-final.jar"
+                                <jar destfile="${project.build.directory}/${project.parent.artifactId}-${revision}.jar"
                                      basedir="${project.build.outputDirectory}"
                                      filesetmanifest="merge"
 

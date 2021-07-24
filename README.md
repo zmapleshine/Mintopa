@@ -31,16 +31,16 @@ It has three main purposes:
 
 # How
 
-The construction of the project is very simple, using the following command:
+Build this project is very simple, using the following command:
 
 ```shell
 maven clean package
 ```
 
-You can find the artifact in the target directory of javaagent module, the file name usually ends up with "final.jar".
-It is important to note that javaagent module does not contain all the instrumentation provided in
-opentelemetry-java-instrumentation. In fact, it is a scaffolding for developers to import instrumentation modules on
-demand.
+You can find the artifact in the target directory of packing module, the file name usually named as "
+midnight-opera-x.x.x.jar". It is important to note that javaagent module does not contain all the instrumentation
+provided in opentelemetry-java-instrumentation. In fact, it is a scaffolding for developers to import instrumentation
+modules on demand.
 
 This project is still in experimental phase and there is no guarantee that all features such as muzzle still exist after
 transplanting.

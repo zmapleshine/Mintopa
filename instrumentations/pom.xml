@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.javaagent</groupId>
-            <artifactId>opentelemetry-javaagent-api</artifactId>
+            <artifactId>opentelemetry-javaagent-instrumentation-api</artifactId>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.javaagent</groupId>
@@ -41,10 +41,6 @@
             <artifactId>javaagent-tooling</artifactId>
             <version>${revision}</version>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-api-caching</artifactId>
         </dependency>
     </dependencies>
 
