@@ -4,15 +4,30 @@
 ![Language](https://img.shields.io/badge/language-Java-orange.svg)
 ![Language](https://img.shields.io/hexpm/l/plug)
 
-Develop "openelemetry-java-instrumentation" project in a lightweight way.
-Use maven to build it.
+[中文说明](README_ZH.md)
 
-# What
+Develop  [openelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
+project in a lightweight way. Use maven to build it.
+
+# About
 
 Midnight Opera uses maven to build opentelemetry-java-instrumentation, which can be viewed as transplanting from gradle
 build tool to maven. Developers can build their own features base on it.
 
-# Why
+# Getting Started
+
+Build this project is very simple, using the following command:(you must install maven tool before that)
+
+```shell
+maven clean package
+```
+
+You can find the artifact in the target directory of packing module, the file name usually named as "
+midnight-opera-x.x.x.jar". It is important to note that packing module does not contain all the instrumentation provided
+in opentelemetry-java-instrumentation. In fact, it is a scaffolding for developers to import instrumentation modules on
+demand.
+
+# Motivation
 
 It has three main purposes:
 
@@ -29,18 +44,9 @@ It has three main purposes:
    projects have been gradually migrated from Maven to Gradle, there is a significant learning cost. For average
    developers,spending a lot of effort on learning build tools is obviously not a priority.
 
-# How
+# Contributing
 
-Build this project is very simple, using the following command:
-
-```shell
-maven clean package
-```
-
-You can find the artifact in the target directory of packing module, the file name usually named as "
-midnight-opera-x.x.x.jar". It is important to note that javaagent module does not contain all the instrumentation
-provided in opentelemetry-java-instrumentation. In fact, it is a scaffolding for developers to import instrumentation
-modules on demand.
+See [COUNTRIBUTING.MD](CONTRIBUTING.md)
 
 This project is still in experimental phase and there is no guarantee that all features such as muzzle still exist after
 transplanting.

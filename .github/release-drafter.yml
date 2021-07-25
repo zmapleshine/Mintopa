@@ -13,7 +13,9 @@ categories:
       - 'bug'
       - 'hotfix'
   - title: '🧰 Maintenance'
-    label: 'chore'
+    label:
+      - 'chore'
+      - 'documentation'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&'
 version-resolver:
