@@ -7,11 +7,11 @@
 [中文说明](README_ZH.md)
 
 Develop  [openelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-project in a lightweight way. Use maven to build it.
+project in a lightweight way.
 
 # About
 
-Midnight Opera uses maven to build opentelemetry-java-instrumentation, which can be viewed as transplanting from gradle
+Midnight-Opera uses maven to build opentelemetry-java-instrumentation, which can be viewed as transplanting from gradle
 build tool to maven. Developers can build their own features base on it.
 
 # Getting Started
