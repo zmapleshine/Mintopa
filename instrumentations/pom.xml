@@ -22,6 +22,10 @@
         <module>javaagent-demo-module</module>
     </modules>
 
+    <properties>
+        <junit-vintage-engine.version>5.7.</junit-vintage-engine.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
@@ -42,6 +46,28 @@
             <version>${revision}</version>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent</groupId>
+            <artifactId>opentelemetry-testing-common</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent</groupId>
+            <artifactId>opentelemetry-agent-for-testing</artifactId>
+            <version>${opentelemetry-instrumentation.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-vintage-engine.version}2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
