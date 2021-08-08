@@ -8,15 +8,15 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>midnight-opera</artifactId>
+        <artifactId>mintopa</artifactId>
         <groupId>com.minardream</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>javaagent-tooling</artifactId>
 
-    <name>midnight-opera-javaagent-tooling</name>
-    <description>Midnight Opera Javaagent Tools</description>
+    <name>mintopa-javaagent-tooling</name>
+    <description>Mintopa Javaagent Tools</description>
 
     <dependencies>
 

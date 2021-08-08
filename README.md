@@ -1,6 +1,6 @@
-# Midnight Opera
+# Mintopa
 
-[![Build Status](https://travis-ci.com/zmapleshine/Midnight-Opera.svg?branch=main)](https://travis-ci.com/zmapleshine/Midnight-Opera)
+[![Build Status](https://travis-ci.com/zmapleshine/Mintopa.svg?branch=main)](https://travis-ci.com/zmapleshine/Mintopa)
 ![Language](https://img.shields.io/badge/language-Java-orange.svg)
 ![Language](https://img.shields.io/hexpm/l/plug)
 
@@ -11,7 +11,7 @@ project in a lightweight way.
 
 # About
 
-Midnight-Opera uses maven to build opentelemetry-java-instrumentation, which can be viewed as transplanting from gradle
+Mintopa uses maven to build opentelemetry-java-instrumentation, which can be viewed as transplanting from gradle
 build tool to maven. Developers can build their own features base on it.
 
 # Getting Started
@@ -23,7 +23,7 @@ maven clean package
 ```
 
 You can find the artifact in the target directory of packing module, the file name usually named as "
-midnight-opera-x.x.x.jar". It is important to note that packing module does not contain all the instrumentation provided
+mintopa-x.x.x.jar". It is important to note that packing module does not contain all the instrumentation provided
 in opentelemetry-java-instrumentation. In fact, it is a scaffolding for developers to import instrumentation modules on
 demand.
 

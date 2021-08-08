@@ -1,6 +1,6 @@
-# Midnight Opera
+# Mintopa
 
-[![Build Status](https://travis-ci.com/zmapleshine/Midnight-Opera.svg?branch=main)](https://travis-ci.com/zmapleshine/Midnight-Opera)
+[![Build Status](https://travis-ci.com/zmapleshine/Mintopa.svg?branch=main)](https://travis-ci.com/zmapleshine/Mintopa)
 ![Language](https://img.shields.io/badge/language-Java-orange.svg)
 ![Language](https://img.shields.io/hexpm/l/plug)
 
@@ -8,7 +8,7 @@
 
 # 关于
 
-Midnight-Opera (午夜歌剧) 使用 Maven 来构建 "opentelemetry-java-instrumentation"（以下简称 otel）。 它也可以看做是从 Gradle 构建工具到 Maven 构建工具的移植。
+Mintopa 使用 Maven 来构建 "opentelemetry-java-instrumentation"（以下简称 otel）。 它也可以看做是从 Gradle 构建工具到 Maven 构建工具的移植。
 开发者可以基于该项目来开发构建自己的功能。
 
 # 如何开始
@@ -19,7 +19,7 @@ Midnight-Opera (午夜歌剧) 使用 Maven 来构建 "opentelemetry-java-instrum
 maven clean package
 ```
 
-你会在 packing 模块的 target 目录中找到打包后的 Jar 包，通常文件名是 "midnight-opera-x.x.x.jar" 这样的格式。 需要特别注意的是，该项目并不包含 otel 中提供的所有组件的仪器(
+你会在 packing 模块的 target 目录中找到打包后的 Jar 包，通常文件名是 "mintopa-x.x.x.jar" 这样的格式。 需要特别注意的是，该项目并不包含 otel 中提供的所有组件的仪器(
 instrumentation)。 事实上，本项目只是个脚手架，开发人员可以按需导入 otel 提供的仪器。
 
 # 创立动机

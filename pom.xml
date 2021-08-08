@@ -10,13 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.minardream</groupId>
-    <artifactId>midnight-opera</artifactId>
+    <artifactId>mintopa</artifactId>
     <version>${revision}</version>
 
     <packaging>pom</packaging>
-    <name>midnight-opera</name>
+    <name>mintopa</name>
     <description>Use maven to build opentelemetry-java-instrumentation</description>
-    <url>https://github.com/zmapleshine/midnight-opera</url>
+    <url>https://github.com/zmapleshine/mintopa</url>
 
     <licenses>
         <license>
@@ -27,12 +27,12 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/zmapleshine/midnight-opera</url>
+        <url>https://github.com/zmapleshine/mintopa</url>
         <connection>
-            scm:git:git://github.com/zmapleshine/midnight-opera
+            scm:git:git://github.com/zmapleshine/mintopa
         </connection>
         <developerConnection>
-            scm:git:ssh://git@github.com/zmapleshine/midnight-opera
+            scm:git:ssh://git@github.com/zmapleshine/mintopa
         </developerConnection>
         <tag>HEAD</tag>
     </scm>

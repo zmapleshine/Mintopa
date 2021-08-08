@@ -8,7 +8,7 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>midnight-opera</artifactId>
+        <artifactId>mintopa</artifactId>
         <groupId>com.minardream</groupId>
         <version>${revision}</version>
     </parent>
@@ -16,8 +16,8 @@
 
     <artifactId>instrumentations</artifactId>
     <packaging>pom</packaging>
-    <name>midnight-opera-instrumentations</name>
-    <description>Midnight Opera Instrumentations</description>
+    <name>mintopa-instrumentations</name>
+    <description>Mintopa Instrumentations</description>
     <modules>
         <module>javaagent-demo-module</module>
     </modules>
