@@ -21,7 +21,7 @@ public class AgentBootstrap {
         System.out.println();
         System.out.println(":: Mintopa ver " + AgentBootstrap.class.getPackage().getImplementationVersion() + " ::");
         System.out.println(":: Website : https://github.com/zmapleshine/Mintopa");
-        System.out.println(":: OpenTelemetry Java Instrumentation (v1.4.0-alpha) : https://github.com/open-telemetry/opentelemetry-java-instrumentation");
+        System.out.println(":: OpenTelemetry Java Instrumentation (v1.9.1-alpha) : https://github.com/open-telemetry/opentelemetry-java-instrumentation");
         System.out.println();
         OpenTelemetryAgent.premain(agentArgs, inst);
     }
